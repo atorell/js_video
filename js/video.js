@@ -32,14 +32,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	// Turn off looping
 	player1.loop = false;
   
-	// Initialize the volume and volumeText based on the slider's initial value
-	volumeText.textContent = `${volumeSlider.value}%`;
+	volumeText.textContent = `${slider.value}%`;
   
 	playButton.addEventListener("click", function() {
 	  myVideo.play();
-	  // Update the volume and volumeText
-	  volumeSlider.value = myVideo.volume * 100;
-	  volumeText.textContent = `${volumeSlider.value}%`;
+	  myVideo.volume = slider.value / 100;
+	  volumeText.textContent = `${slider.value}%`;
 	});
   
 	pauseButton.addEventListener("click", function() {
