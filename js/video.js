@@ -9,41 +9,48 @@ window.addEventListener("load", function() {
 // 	console.log("Play Video");
 // });
 
-		document.addEventListener("DOMContentLoaded", function() {
-  const myVideo = document.getElementById("player1");
-  const playButton = document.getElementById("play");
-  const pauseButton = document.getElementById("pause");
-  const slider = document.getElementById("slider");
-  const volumeText = document.getElementById("volume");
-  const slowerButton = document.getElementById("slower");
-  const fasterButton = document.getElementById("faster");
-  const skipButton = document.getElementById("skip");
-  const muteButton = document.getElementById("mute");
-  const volumeSlider = document.getElementById("slider");
-  const vintageButton = document.getElementById("vintage");
-  const originalButton = document.getElementById("orig");
+document.addEventListener("DOMContentLoaded", function() {
+	const myVideo = document.getElementById("player1");
+	const playButton = document.getElementById("play");
+	const pauseButton = document.getElementById("pause");
+	const slider = document.getElementById("slider");
+	const volumeText = document.getElementById("volume");
+	const slowerButton = document.getElementById("slower");
+	const fasterButton = document.getElementById("faster");
+	const skipButton = document.getElementById("skip");
+	const muteButton = document.getElementById("mute");
+	const volumeSlider = document.getElementById("slider");
+	const vintageButton = document.getElementById("vintage");
+	const originalButton = document.getElementById("orig");
+	
+	// Get the video element
+	const player1 = document.getElementById('player1');
+		  
+	// Turn off autoplay
+	player1.autoplay = false;
+	
+	// Turn off looping
+	player1.loop = false;
   
-  // Get the video element
-  const player1 = document.getElementById('player1');
-		
-  // Turn off autoplay
-  player1.autoplay = false;
+	// Initialize the volume and volumeText based on the slider's initial value
+	volumeText.textContent = `${volumeSlider.value}%`;
   
-  // Turn off looping
-  player1.loop = false;
+	playButton.addEventListener("click", function() {
+	  myVideo.play();
+	  // Update the volume and volumeText
+	  volumeSlider.value = myVideo.volume * 100;
+	  volumeText.textContent = `${volumeSlider.value}%`;
+	});
+  
+	pauseButton.addEventListener("click", function() {
+	  myVideo.pause();
+	});
+  
+	slider.addEventListener("input", function() {
+	  myVideo.volume = slider.value / 100;
+	  volumeText.textContent = `${slider.value}%`;
+	});
 
-  playButton.addEventListener("click", function() {
-    myVideo.play();
-  });
-
-  pauseButton.addEventListener("click", function() {
-    myVideo.pause();
-  });
-
-  slider.addEventListener("input", function() {
-    myVideo.volume = slider.value / 100;
-    volumeText.textContent = `${slider.value}%`;
-  });
   playButton.addEventListener("click", function() {
     myVideo.play();
   });
